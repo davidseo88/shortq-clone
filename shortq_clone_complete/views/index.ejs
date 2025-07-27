@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ShortQ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center p-6">
+  <h1 class="text-3xl font-bold mb-4">🔗 ShortQ - URL Shortener</h1>
+  <form action="/shorten" method="POST" class="w-full max-w-lg">
+    <input name="fullUrl" type="url" placeholder="Paste your URL here" required class="w-full p-2 border rounded mb-4">
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Shorten</button>
+  </form>
+
+  <div class="mt-8 w-full max-w-lg">
+    <% shortURLs.forEach(url => { %>
+      <div class="flex justify-between items-center bg-white p-4 rounded shadow mb-2">
+        <a class="text-blue-500" href="/<%= url.short %>" target="_blank">
+          shortq.org/<%= url.short %>
+        </a>
+        <span class="text-gray-500">Clicks: <%= url.clicks %></span>
+      </div>
+    <% }); %>
+  </div>
+</body>
+</html>
